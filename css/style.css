@@ -1,10 +1,9 @@
+
 .all {
     display: flex;
     justify-items: center;
     justify-content: center;
 }
-
-
 .calc {
     width: 435px;
     height: 404px;
@@ -13,22 +12,35 @@
     flex-wrap: wrap;
     flex-direction: column;
     align-items: center;
+    border-radius: 50px;
 }
 
 #displey {
     width: 415px;
     height: 100px;
-    background: silver;
+    background: white;
     margin-top: 10px;
+    font-family: Marker Felt, fantasy;
+    font-size: 400%; /* Размер текста */
+    display: flex;
+    justify-items: center;
+    flex-wrap: wrap;
+    align-items: center;
+    border-radius: 30px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
 }
 
 .buttons {
     width: 415px;
     height: 270px;
-    background: silver;
+    /*background: silver;*/
     margin-top: 15px;
     display: flex;
     flex-wrap: wrap;
+    border-radius: 30px;
 }
 
 .button-num-sybols {
@@ -43,6 +55,7 @@
     height: 50px;
     display: flex;
     margin-bottom: 5px;
+    justify-content: space-evenly;
 
 }
 
@@ -59,12 +72,13 @@
     height: 265px;
     display: flex;
     flex-wrap: wrap;
-    margin-left: 4px;
-    margin-top: 2px;
+    justify-items: center;
+    justify-content: space-evenly;
+    margin-top: -3px;
 }
 
-.number, .symbolsCE, .symbols{
-    width: 100px;
+.number, .symbolsCE, .symbols {
+    width: 98px;
     height: 50px;
     display: flex;
     flex-wrap: wrap;
@@ -73,36 +87,39 @@
     background: rgba(226, 244, 228, 1);
     margin-left: 5px;
 }
-
-
-#n0 {
-    width: 205px;
+#n9 {
+    width: 200px;
     height: 50px;
 }
-#nCE, #nDEL {
-    width: calc(305px/2);
+
+#n21, #n20 {
+    width: 160px;
     height: 50px;
-    margin: 0px;
 }
-#nDEL{
+
+.symbols {
+    margin-top: 5px;
+
+}
+
+#n11 {
+    margin: 0;
     margin-left: 5px;
 }
 
-#n1,#n4,#n7, #n0{
-    margin-left: 0px;
-}
-.symbols{
-    margin-top:5px ;
-
-}
-#n11{
-    margin: 0 ;
-    margin-left:5px ;
-}
-#n14, #n15{
-    margin-top: 3px ;
+#n14, #n15 {
+    margin-top: 3px;
 }
 
-.h1{
+.h1 {
     font-family: "Times New Roman";
+}
+.btt{
+    border-radius: 100px;
+}
+.btt:active {
+    -webkit-box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.2);
+
 }
