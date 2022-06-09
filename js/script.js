@@ -16,7 +16,7 @@ const arrBlock = [num1, sign, num2];
 function res(arr) {
     const a = arr[0].join('').split();
     let b = arr[2].join('').split();
-    let znak = arr[1].join('');
+    let sign = arr[1].join('');
     if(num2.length === 0){
         b = arr[0].join('').split();
     }
@@ -24,7 +24,7 @@ function res(arr) {
         znak = '+';
     }
     let res = 0;
-    switch (znak) {
+    switch (sign) {
         case ('+'):
             res = (+a) + (+b);
             break
