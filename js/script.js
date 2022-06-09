@@ -15,8 +15,14 @@ const arrBlock = [num1, sign, num2];
 
 function res(arr) {
     const a = arr[0].join('').split();
-    const b = arr[2].join('').split();
-    const znak = arr[1].join('');
+    let b = arr[2].join('').split();
+    let znak = arr[1].join('');
+    if(num2.length === 0){
+        b = arr[0].join('').split();
+    }
+    if(sign.length === 0){
+        znak = '+';
+    }
     let res = 0;
     switch (znak) {
         case ('+'):
@@ -77,10 +83,17 @@ function createButton(arr, key) {
                 if (sign.length === 0) {
                     num1.pop();
                     displeyDiv.innerText = `${num1.join('')}`
+                    console.log(sign.length);
+                    if (num1.length < 1 || sign.length === 1 && num2.length < 1) {
+                        displeyDiv.innerText = `0`
+                    }
                     return
                 }
                 num2.pop();
                 displeyDiv.innerText = `${num2.join('')}`
+                if (num1.length < 1 || sign.length === 1 && num2.length < 1) {
+                    displeyDiv.innerText = `0`
+                }
             }
         })
         numbsDiv.append(divBtt);
