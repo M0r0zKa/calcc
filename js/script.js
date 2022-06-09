@@ -1,7 +1,7 @@
 const symbol = {
     number: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '.'],
     symbols: ['+', '-', '*', '/', '='],
-    symbolsCE: ['CE', 'DEL']
+    symbolsCE: ['CE', '<']
 };
 const numbsDiv = document.getElementById('numbers');
 const symbolsDiv = document.getElementById('symbols');
@@ -21,7 +21,7 @@ function res(arr) {
         b = arr[0].join('').split();
     }
     if(sign.length === 0){
-        znak = '+';
+        sign = '+';
     }
     let res = 0;
     switch (sign) {
@@ -79,7 +79,7 @@ function createButton(arr, key) {
                 displeyDiv.innerText = '0';
             } else if (divBtt.innerText === '=') {
                 res(arrBlock)
-            } else if (divBtt.innerText === 'DEL') {
+            } else if (divBtt.innerText === '<') {
                 if (sign.length === 0) {
                     num1.pop();
                     displeyDiv.innerText = `${num1.join('')}`
