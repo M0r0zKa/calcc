@@ -10,8 +10,9 @@ const displeyDiv = document.getElementById('displey');
 displeyDiv.setAttribute('dir', 'rtl')
 let num1 = [];
 let num2 = [];
-let numznak = [];
-const arrBlock = [num1, numznak, num2];
+let sign = [];
+const arrBlock = [num1, sign, num2];
+
 function res(arr) {
     const a = arr[0].join('').split();
     const b = arr[2].join('').split();
@@ -37,31 +38,30 @@ function res(arr) {
     } else {
         displeyDiv.innerText = 'NaN'
     }
-    numznak.length = 0;
+    sign.length = 0;
     num2.length = 0;
     num1.length = 0;
     num1.push(res);
 }
+
 function createButton(arr, key) {
     for (let i = 0; i < arr[key].length; i++) {
         displeyDiv.innerText = `0`
         const keyElement = arr[key][i];
-        // console.log(keyElement)
         const divBtt = document.createElement('div');
         const even = (element) => (element === divBtt.innerText)
         divBtt.addEventListener('click', function (e) {
-            if (num1.length <= 9 && !arr.symbols.some(even) && numznak.length === 0 && !arr.symbolsCE.some(even)) {
+            if (num1.length <= 9 && !arr.symbols.some(even) && sign.length === 0 && !arr.symbolsCE.some(even)) {
                 num1.push(divBtt.innerText)
                 displeyDiv.innerText = `${num1.join('')}`
             } else if (arr.symbols.some(even) && divBtt.innerText !== '=' && num1.length >= 1) {
-                if (numznak.length === 0) {
+                if (sign.length === 0) {
                     displeyDiv.innerText = `${divBtt.innerText}`;
-                    numznak.push(divBtt.innerText)
+                    sign.push(divBtt.innerText)
                 } else {
-                    numznak.length = 0;
+                    sign.length = 0;
                     displeyDiv.innerText = `${divBtt.innerText}`;
-                    numznak.push(divBtt.innerText)
-                    console.log(numznak);
+                    sign.push(divBtt.innerText)
                 }
             } else if (num2.length <= 9 && divBtt.innerText !== '=' && !arr.symbolsCE.some(even) && !arr.symbols.some(even)) {
                 num2.push(divBtt.innerText)
@@ -69,10 +69,18 @@ function createButton(arr, key) {
             } else if (divBtt.innerText === 'CE') {
                 num1.length = 0;
                 num2.length = 0;
-                numznak.length = 0;
+                sign.length = 0;
                 displeyDiv.innerText = '0';
             } else if (divBtt.innerText === '=') {
                 res(arrBlock)
+            } else if (divBtt.innerText === 'DEL') {
+                if (sign.length === 0) {
+                    num1.pop();
+                    displeyDiv.innerText = `${num1.join('')}`
+                    return
+                }
+                num2.pop();
+                displeyDiv.innerText = `${num2.join('')}`
             }
         })
         numbsDiv.append(divBtt);
@@ -99,7 +107,7 @@ function createButton(arr, key) {
     }
 }
 
-const buttonCreat = (arr, numbsDiv, symbolsDiv, symbolsDelDiv) => {
+const buttonCreat = (arr) => {
     for (const key in arr) {
         createButton(arr, key)
     }
